@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Usage-Based Billing Transition Checklist</title>
+  <meta name="description" content="Prescriptive guidance and a checklist of activities for customers preparing for the GitHub Copilot transition to usage-based billing." />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" type="image/png" href="img/ubb-checklist-icon.png" />
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem("ubb-checklist-theme");
+        if (!t) {
+          t = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+        }
+        if (t === "dark") document.documentElement.setAttribute("data-theme", "dark");
+      } catch (e) { /* ignore */ }
+    })();
+  </script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <img src="img/ubb-checklist-icon.png" alt="" class="header-icon" />
+      <div class="header-text">
+        <a class="back-link" href="index.html">&larr; Overview</a>
+        <h1>Usage-Based Billing Transition Checklist</h1>
+        <p class="subtitle">A step-by-step guide to prepare your enterprise for the move to AI credits and usage-based billing for GitHub Copilot.</p>
+      </div>
+      <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Toggle dark mode" title="Toggle dark mode">
+        <span class="theme-icon theme-icon-light" aria-hidden="true">&#9788;</span>
+        <span class="theme-icon theme-icon-dark" aria-hidden="true">&#9790;</span>
+      </button>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="intro">
+      <h2>How to use this guide</h2>
+      <p>
+        Steps are grouped by <strong>when</strong> they should happen. Each step is collapsible and tagged with
+        <strong>who</strong> should perform it. Check the box on each step as you complete it &mdash; your progress
+        is saved locally in this browser.
+      </p>
+      <div class="progress-wrap" aria-label="Overall progress">
+        <div class="progress-bar"><div id="progress-fill" class="progress-fill"></div></div>
+        <span id="progress-label" class="progress-label">0 of 0 complete</span>
+      </div>
+    </section>
+
+    <!-- ================= NOW ================= -->
+    <section class="time-section">
+      <header class="time-header">
+        <h2>Now</h2>
+        <p>Preparation work to complete before the new billing model goes into effect.</p>
+      </header>
+
+      <ol class="checklist">
+
+      <li class="step" data-step="1">
+        <details>
+          <summary>
+            <label class="check" onclick="event.stopPropagation();">
+              <input type="checkbox" class="step-check" aria-label="Mark step complete" />
+              <span class="check-box" aria-hidden="true"></span>
+            </label>
+            <span class="step-number">1</span>
+            <span class="step-title">Review forecasted impact of billing changes</span>
+            <span class="tags">
+              <span class="tag tag-persona persona-admin">Enterprise owner / billing manager</span>
+            </span>
+          </summary>
+          <div class="step-body">
+            <p>Use the billing preview tool to understand how the new model will affect your enterprise based on recent usage.</p>
+            <ol>
+              <li>Navigate to your GitHub Enterprise and click the <strong>"Preview your usage"</strong> banner. (<a href="https://docs.github.com/copilot/how-tos/manage-and-track-spending/prepare-for-usage-based-billing#download-the-usage-report" target="_blank" rel="noopener">View detailed steps</a>)</li>
+              <li>Click <strong>Download CSV</strong>.</li>
+              <li>The report will be emailed to you within a few minutes. Download it when it arrives.</li>
+              <li>Navigate to <a href="https://copilot-billing-preview.github.com/" target="_blank" rel="noopener">copilot-billing-preview.github.com</a>.</li>
+              <li>Upload the CSV.</li>
+              <li>Confirm the correct number of Copilot licenses on the <em>Users</em> tab. Users with no activity during the report period will not be included automatically. You can manually adjust the numbers if needed by clicking <strong>"Edit seat counts"</strong>.</li>
+              <li>Review the forecast on the <strong>Overview</strong> tab to understand the overall impact on your enterprise. You can also view data by user, model, product, organization, or cost center.</li>
+            </ol>
+            <div class="callout callout-note">
+              <strong>Note:</strong> The pricing shown is based off of the limited promotional period for June, July, and August.
+            </div>
+            <div class="callout callout-note">
+              <strong>Note:</strong> The forecast is based on list prices. Azure consumption discounts or other special pricing are not reflected.
+            </div>
+            <div class="callout callout-warn">
+              <strong>Treat the preview as a directional estimate.</strong> The April preview data has a few known gaps. It&rsquo;s a reliable signal for cost shape, top consumers, and model mix &mdash; not a recalculated bill. 
+              <ul>
+                <li><strong>0&times; model usage from April 1&ndash;24 is missing.</strong> Across paid plans this is roughly 2% of activity at scale, so it won&rsquo;t materially shift most totals. If your team relies primarily on 0&times; models, look at data from April 24 onwards to inform your estimates.</li>
+                <li><strong>Duplicate entries may appear for April 24&ndash;30</strong> due to a data backfill gap.</li>
+                <li><strong>Some code review entries are missing AI credit estimations.</strong> Copilot code reviews charged directly to organizations via automation, or initiated by a user without a Copilot license, will reflect 0 AI credits due to a known data issue.</li>
+              </ul>
+              Treat the totals as an estimated range, monitor patterns through May, and plan budget updates accordingly.
+            </div>
+            <p class="reference">
+              Reference: <a href="https://docs.github.com/copilot/how-tos/manage-and-track-spending/prepare-for-usage-based-billing" target="_blank" rel="noopener">Prepare for usage-based billing</a>
+            </p>
+            <div class="gallery">
+              <figure>
+                <div class="img-frame">
+                  <img src="img/download-report.png" alt="Download usage report banner in GitHub Enterprise" loading="lazy" />
+                </div>
+                <figcaption>Download the usage report from your enterprise.</figcaption>
+              </figure>
+              <figure>
+                <div class="img-frame">
+                  <img src="img/sidecar-overview.png" alt="Copilot billing preview overview tab" loading="lazy" />
+                </div>
+                <figcaption>Forecast overview in the Copilot Billing Preview tool.</figcaption>
+              </figure>
+            </div>
+          </div>
+        </details>
+      </li>
+
+      <li class="step" data-step="2">
+        <details>
+          <summary>
+            <label class="check" onclick="event.stopPropagation();">
+              <input type="checkbox" class="step-check" aria-label="Mark step complete" />
+              <span class="check-box" aria-hidden="true"></span>
+            </label>
+            <span class="step-number">2</span>
+            <span class="step-title">Review and adjust budgets</span>
+            <span class="tags">
+              <span class="tag tag-persona persona-admin">Enterprise owner / billing manager</span>
+            </span>
+          </summary>
+          <div class="step-body">
+            <p>
+              Budgets provide a critical guardrail for controlling your AI credit spending. By setting budgets at the enterprise and cost center levels, you can define the maximum amount of credits that can be charged to your organization, helping prevent unexpected costs as your teams adopt GitHub Copilot.
+            </p>
+            <p>
+              Existing enterprise-level budgets for premium requests will automatically convert to AI credits on June 1st.
+              Review them at both the <strong>enterprise</strong> and <strong>cost center</strong> level to confirm they still reflect the limits you want.
+              You can adjust existing budgets or add new ones to control your overall spend.
+            </p>
+
+            <h4>View your current budgets</h4>
+            <ol>
+              <li>Sign in to GitHub and click your profile photo, then click <strong>Your enterprises</strong>.</li>
+              <li>Select your enterprise, then click <strong>Settings</strong> &rarr; <strong>Billing &amp; licensing</strong>.</li>
+              <li>In the left sidebar, click <strong>Budgets and alerts</strong>.</li>
+              <li>Review the list of existing enterprise budgets. To inspect a cost center budget, switch to the <strong>Cost centers</strong> view and select a cost center.</li>
+            </ol>
+            <h4>Add a new budget</h4>
+            <ol>
+              <li>Click <strong>New budget</strong>, choose the scope (enterprise, cost center, or repository) and set the limit.</li>
+              <li>Choose whether the budget is a <strong>hard</strong> or <strong>soft</strong> limit by toggling <strong>"Stop usage when budget limit is reached"</strong>:
+                <ul>
+                  <li><strong>Hard limit</strong> (toggle on): Usage is blocked once the budget is reached, preventing any additional charges.</li>
+                  <li><strong>Soft limit</strong> (toggle off): Usage continues past the limit and you are alerted, but charges keep accruing.</li>
+                </ul>
+              </li>
+              <li>Setup alerts so that you are notified well before a budget is exhausted.</li>
+            </ol>
+                        <h4>Adjust an existing budget</h4>
+            <ol>
+              <li>In the list of budgets, click <span aria-hidden="true">&middot;&middot;&middot;</span> next to the budget you want to change, and click <strong>&#9998; Edit</strong> or <strong>&#128465; Delete</strong>.</li>
+              <li>Update the budget or alert recipients as needed, then save your changes.</li>
+            </ol>
+                        <div class="callout callout-note">
+              <strong>Note:</strong> All budget amounts are evaluated against <strong>list-price</strong> usage, <em>before</em> any Azure consumption discounts or other special pricing are applied.
+            </div>
+            <p class="reference">
+              References:
+            </p>
+            <ul class="reference-list">
+              <li><a href="https://docs.github.com/enterprise-cloud@latest/billing/how-tos/set-up-budgets" target="_blank" rel="noopener">Set up budgets &mdash; GitHub Docs</a></li>
+              <li><a href="https://wellarchitected.github.com/library/governance/recommendations/managing-ai-credits/" target="_blank" rel="noopener">Managing AI credits &mdash; Well-Architected for GitHub</a></li>
+              <li><a href="https://learn.github.com/event/bb786fa6-d94c-4dd9-9917-11eee58265ef" target="_blank" rel="noopener">Register for an upcoming budgetting webinar</a></li>
+            </ul>
+            <div class="gallery">
+              <figure>
+                <div class="img-frame">
+                  <img src="img/edit-budget.png" alt="Editing an enterprise budget in GitHub settings" loading="lazy" />
+                </div>
+                <figcaption>Edit an existing budget from the Budgets and alerts page.</figcaption>
+              </figure>
+            </div>
+          </div>
+        </details>
+      </li>
+
+      <li class="step" data-step="3">
+        <details>
+          <summary>
+            <label class="check" onclick="event.stopPropagation();">
+              <input type="checkbox" class="step-check" aria-label="Mark step complete" />
+              <span class="check-box" aria-hidden="true"></span>
+            </label>
+            <span class="step-number">3</span>
+            <span class="step-title">Plan for user-level budgets (ULBs)</span>
+            <span class="tags">
+              <span class="tag tag-persona persona-admin">Enterprise owner / billing manager</span>
+            </span>
+          </summary>
+          <div class="step-body">
+            <p>
+              ULBs control how much an individual user can <strong>consume</strong> in AI credits. This is different from budgets,
+              which control how much can be <strong>charged</strong> to the enterprise or cost center. ULBs help prevent any single
+              user from consuming more than their fair share and help manage costs at the user level.
+            </p>
+            <ul>
+              <li>Decide on a <strong>universal default ULB</strong> for your enterprise. It applies to all users without a custom ULB.</li>
+              <li>Decide whether to set <strong>custom ULBs</strong> for specific users (e.g., heavy users, or users who should have a lower limit).</li>
+            </ul>
+            <div class="callout callout-warn">
+              <strong>Warning:</strong> A ULB is not a guarantee of usage. A cost center or enterprise budget can block charges even if a user is within their ULB.
+            </div>
+            <p>
+              These limits cannot be set until the billing changes go into effect on June 1st, but planning now means you can apply them as soon as they are available.
+            </p>
+            <h4>Best practices</h4>
+            <ul>
+              <li>Set a default ULB high enough that most users are not impacted, then set custom ULBs for outliers who consume significantly more than average. This prevents disruption while still controlling costs.</li>
+              <li>Set ULBs <strong>higher than your included AI credits per license</strong> &mdash; otherwise you can't effectively use benefits of pooled AI credits.</li>
+              <li>Consider setting the base ULB to <strong>125&ndash;150% of your included credits</strong>.</li>
+              <li>Consider how ULBs interact with enterprise and cost center budgets to avoid unexpected charges.</li>
+            </ul>
+                <p class="reference">
+              References:
+            </p>
+            <ul class="reference-list">
+              <li><a href="https://wellarchitected.github.com/library/governance/recommendations/managing-ai-credits/" target="_blank" rel="noopener">Managing AI credits &mdash; Well-Architected for GitHub</a></li>
+            </ul>
+          </div>
+        </details>
+      </li>
+
+      <li class="step" data-step="4">
+        <details>
+          <summary>
+            <label class="check" onclick="event.stopPropagation();">
+              <input type="checkbox" class="step-check" aria-label="Mark step complete" />
+              <span class="check-box" aria-hidden="true"></span>
+            </label>
+            <span class="step-number">4</span>
+            <span class="step-title">Communicate changes to users</span>
+            <span class="tags">
+              <span class="tag tag-persona persona-admin">Enterprise owner / billing manager</span>
+            </span>
+          </summary>
+          <div class="step-body">
+            <p>
+              Communicate the upcoming changes to your users via email, internal channels, or team meetings.
+              Cover the new billing model, how it affects them, and any actions they need to take (such as adjusting usage or understanding ULBs).
+              Clear communication reduces confusion and friction during the transition.
+            </p>
+            <h4>Coach users on optimizing their usage</h4>
+            <p>
+              Help users get the most out of their AI credits by sharing a few simple habits:
+            </p>
+            <ul>
+              <li><strong>Choose the right model for the job.</strong> Use lighter, lower-cost models for everyday tasks like quick edits, simple completions, or boilerplate, and reserve premium models for genuinely complex reasoning, large refactors, or hard debugging.</li>
+              <li><strong>Provide as little context as possible, but as much as required.</strong> Attach only the files, selections, or references the model actually needs. Oversharing context inflates credit usage and can dilute the response quality.</li>
+            </ul>
+            <div class="callout callout-info">
+              <strong>Tip:</strong> Look at historic usage of individual users and proactively notify anyone consuming above their planned ULB so they can adjust usage or request a higher ULB.
+            </div>
+            <p class="reference">
+              References:
+            </p>
+            <ul class="reference-list">
+              <li><a href="https://learn.github.com/events" target="_blank" rel="noopener">Register for an upcoming agent quality & token optimization webinar</a></li>
+            </ul>
+          </div>
+        </details>
+      </li>
+
+
+      <li class="step" data-step="5">
+        <details>
+          <summary>
+            <label class="check" onclick="event.stopPropagation();">
+              <input type="checkbox" class="step-check" aria-label="Mark step complete" />
+              <span class="check-box" aria-hidden="true"></span>
+            </label>
+            <span class="step-number">5</span>
+            <span class="step-title">Update developer tools</span>
+            <span class="tags">
+              <span class="tag tag-persona persona-dev">Developer</span>
+            </span>
+          </summary>
+          <div class="step-body">
+            <p>
+              Developers should make sure they are on the latest versions of Visual Studio Code, the GitHub Copilot extension,
+              the Copilot CLI, JetBrains plugins, and any other Copilot-enabled tooling so they have the best experience with the new billing model.
+            </p>
+            <div class="gallery">
+              <figure>
+                <div class="img-frame">
+                  <img src="img/vscode-model.png" alt="Selecting a Copilot model in VS Code" loading="lazy" />
+                </div>
+                <figcaption>Pick a model from the Copilot model picker in VS Code.</figcaption>
+              </figure>
+              <figure>
+                <div class="img-frame">
+                  <img src="img/vscode-aicredits.png" alt="AI credits indicator in VS Code Copilot" loading="lazy" />
+                </div>
+                <figcaption>View remaining AI credits directly in VS Code.</figcaption>
+              </figure>
+            </div>
+          </div>
+        </details>
+      </li>
+
+
+
+      </ol>
+    </section>
+
+    <!-- ================= JUNE 1 ================= -->
+    <section class="time-section">
+      <header class="time-header">
+        <h2>June 1</h2>
+        <p>Activities to perform when the new billing model takes effect.</p>
+      </header>
+
+      <ol class="checklist">
+
+      <li class="step" data-step="6">
+        <details>
+          <summary>
+            <label class="check" onclick="event.stopPropagation();">
+              <input type="checkbox" class="step-check" aria-label="Mark step complete" />
+              <span class="check-box" aria-hidden="true"></span>
+            </label>
+            <span class="step-number">6</span>
+            <span class="step-title">Set user-level budgets (ULBs)</span>
+            <span class="tags">
+              <span class="tag tag-persona persona-admin">Enterprise owner / billing manager</span>
+            </span>
+          </summary>
+          <div class="step-body">
+            <p>Implement the ULBs you planned in step 3:</p>
+            <ol>
+              <li>Set the universal default ULB for all users.</li>
+              <li>Set custom ULBs for specific users as needed.</li>
+            </ol>
+            <div class="callout callout-warn">
+              <strong>Do this on day 1.</strong> ULBs only apply to <em>future</em> consumption &mdash; any credits a user spends before their ULB is in place are not retroactively capped. Apply your default ULB (and any custom ULBs) as soon as the controls become available, before users start consuming on the new model.
+            </div>
+            <div class="callout callout-info">
+              <strong>Tip:</strong> APIs will be available to script setting and updating per-user ULBs, which makes it practical to apply custom limits to large numbers of users without clicking through the UI for each one.
+            </div>
+          </div>
+        </details>
+      </li>
+
+      </ol>
+    </section>
+
+    <!-- ================= ONGOING ================= -->
+    <section class="time-section">
+      <header class="time-header">
+        <h2>Ongoing</h2>
+        <p>Activities to perform continuously throughout each billing cycle.</p>
+      </header>
+
+      <ol class="checklist">
+
+      <li class="step" data-step="7">
+        <details>
+          <summary>
+            <label class="check" onclick="event.stopPropagation();">
+              <input type="checkbox" class="step-check" aria-label="Mark step complete" />
+              <span class="check-box" aria-hidden="true"></span>
+            </label>
+            <span class="step-number">7</span>
+            <span class="step-title">Monitor enterprise usage and adjust as needed</span>
+            <span class="tags">
+              <span class="tag tag-persona persona-admin">Enterprise owner / billing manager</span>
+            </span>
+          </summary>
+          <div class="step-body">
+            <p>
+              Continuously monitor usage and costs using the tools in your enterprise billing settings. If users consistently hit their ULBs,
+              or if overall costs trend higher than expected, adjust ULBs or budgets accordingly.
+            </p>
+            <p>
+              Proactively warn users, cost centers, or the entire enterprise if they are tracking to exceed budgets or ULBs before the end of the month.
+            </p>
+          </div>
+        </details>
+      </li>
+
+      <li class="step" data-step="8">
+        <details>
+          <summary>
+            <label class="check" onclick="event.stopPropagation();">
+              <input type="checkbox" class="step-check" aria-label="Mark step complete" />
+              <span class="check-box" aria-hidden="true"></span>
+            </label>
+            <span class="step-number">8</span>
+            <span class="step-title">Monitor your personal usage throughout the month</span>
+            <span class="tags">
+              <span class="tag tag-persona persona-dev">Developer</span>
+            </span>
+          </summary>
+          <div class="step-body">
+            <p>
+              Keep an eye on your own AI credit consumption so you don't unexpectedly hit your user-level budget partway through the month.
+            </p>
+            <ul>
+              <li>Review your usage in your personal GitHub settings on a regular cadence (e.g., weekly).</li>
+              <li>Be aware of which models and features consume more credits, and pace your usage accordingly.</li>
+              <li>If you are trending toward exceeding your ULB before month-end, adjust your usage or request a higher ULB from your enterprise owner or billing manager.</li>
+            </ul>
+            <div class="callout callout-info">
+              <strong>Tip:</strong> Credits reset at the start of each billing cycle. If you're close to your limit late in the month, plan higher-cost work for the following cycle when feasible.
+            </div>
+          </div>
+        </details>
+      </li>
+
+      </ol>
+    </section>
+
+    <!-- ================= SEPTEMBER 1 ================= -->
+    <section class="time-section">
+      <header class="time-header">
+        <h2>September 1</h2>
+        <p>End of the promotional AI credit period &mdash; revisit your plan.</p>
+      </header>
+
+      <ol class="checklist">
+
+      <li class="step" data-step="9">
+        <details>
+          <summary>
+            <label class="check" onclick="event.stopPropagation();">
+              <input type="checkbox" class="step-check" aria-label="Mark step complete" />
+              <span class="check-box" aria-hidden="true"></span>
+            </label>
+            <span class="step-number">9</span>
+            <span class="step-title">Re-evaluate budgets and ULBs</span>
+            <span class="tags">
+              <span class="tag tag-persona persona-admin">Enterprise owner / billing manager</span>
+            </span>
+          </summary>
+          <div class="step-body">
+            <p>
+              On <strong>September 1</strong>, the additional promotional AI credits expire. Without adjustments,
+              users may start reaching limits before the end of the month.
+            </p>
+            <p>Review whether you need to:</p>
+            <ul>
+              <li>Adjust enterprise or cost center budgets.</li>
+              <li>Adjust default or custom ULBs.</li>
+              <li>Prepare users for the change in available credits.</li>
+            </ul>
+
+          </div>
+        </details>
+      </li>
+      </ol>
+    </section>
+
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>Usage-Based Billing Transition Checklist</p>
+    </div>
+  </footer>
+
+  <div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-hidden="true">
+    <button type="button" class="lightbox-close" aria-label="Close">&times;</button>
+    <button type="button" class="lightbox-nav lightbox-prev" aria-label="Previous image">&#8249;</button>
+    <img id="lightbox-img" alt="" />
+    <button type="button" class="lightbox-nav lightbox-next" aria-label="Next image">&#8250;</button>
+    <div id="lightbox-caption" class="lightbox-caption"></div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

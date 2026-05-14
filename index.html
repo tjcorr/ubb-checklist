@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GitHub Copilot &mdash; Usage-Based Billing Transition</title>
+  <meta name="description" content="An overview of GitHub Copilot's move to usage-based billing, with a step-by-step checklist to help your enterprise prepare." />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" type="image/png" href="img/ubb-checklist-icon.png" />
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem("ubb-checklist-theme");
+        if (!t) {
+          t = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+        }
+        if (t === "dark") document.documentElement.setAttribute("data-theme", "dark");
+      } catch (e) { /* ignore */ }
+    })();
+  </script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <img src="img/ubb-checklist-icon.png" alt="" class="header-icon" />
+      <div class="header-text">
+        <h1>Usage-Based Billing Transition Checklist</h1>
+        <p class="subtitle">A step-by-step guide to prepare your enterprise for the move to AI credits and usage-based billing for GitHub Copilot.</p>
+      </div>
+      <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Toggle dark mode" title="Toggle dark mode">
+        <span class="theme-icon theme-icon-light" aria-hidden="true">&#9788;</span>
+        <span class="theme-icon theme-icon-dark" aria-hidden="true">&#9790;</span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-inner">
+        <div class="hero-text">
+          <p class="hero-eyebrow">Your checklist for</p>
+          <h2 class="hero-title">GitHub Copilot&rsquo;s move to <span class="hero-accent">usage-based billing</span></h2>
+          <p class="hero-lede">
+            Discussing key tasks, considerations, and next steps to ensure a smooth
+            transition to AI credits and usage-based billing.
+          </p>
+          <div class="hero-cta">
+            <a class="cta-button" href="checklist.html">Open the checklist &rarr;</a>
+            <a class="cta-link" href="https://docs.github.com/copilot/how-tos/manage-and-track-spending/prepare-for-usage-based-billing" target="_blank" rel="noopener">Read the official docs</a>
+          </div>
+        </div>
+        <div class="hero-image-wrap">
+          <img src="img/ubb-checklist.png" alt="Illustration of a friendly Copilot bot holding a clipboard checklist for the move to usage-based billing." class="hero-image" />
+        </div>
+      </div>
+    </section>
+
+    <section class="container landing-section">
+      <h2>What&rsquo;s changing</h2>
+      <p>
+        On <strong>June 1</strong>, GitHub Copilot moves to a usage-based billing model powered by
+        <strong>AI credits</strong>. Existing premium-request budgets convert automatically, but you&rsquo;ll want to
+        review your guardrails, plan user-level budgets (ULBs), and prepare your developers before the switch.
+      </p>
+      <p>
+        On <strong>September 1</strong>, the promotional AI credit period ends &mdash; another moment to revisit
+        budgets and usage patterns.
+      </p>
+    </section>
+
+    <section class="container landing-section">
+      <h2>What&rsquo;s in the checklist</h2>
+      <p>The checklist groups nine activities by <strong>when</strong> they should happen and tags each with <strong>who</strong> should own it.</p>
+      <div class="summary-grid">
+        <a class="summary-card" href="checklist.html#">
+          <span class="summary-when">Now</span>
+          <h3>Prepare</h3>
+          <ul>
+            <li>Review forecasted impact of billing changes</li>
+            <li>Review and adjust budgets</li>
+            <li>Plan for user-level budgets (ULBs)</li>
+            <li>Communicate changes and coach users</li>
+            <li>Update developer tools</li>
+          </ul>
+        </a>
+        <a class="summary-card" href="checklist.html#">
+          <span class="summary-when">June 1</span>
+          <h3>Launch</h3>
+          <ul>
+            <li>Set user-level budgets on day one, before users start consuming</li>
+          </ul>
+        </a>
+        <a class="summary-card" href="checklist.html#">
+          <span class="summary-when">Ongoing</span>
+          <h3>Operate</h3>
+          <ul>
+            <li>Monitor enterprise usage and adjust budgets and ULBs as needed</li>
+            <li>Monitor your personal usage throughout the month</li>
+          </ul>
+        </a>
+        <a class="summary-card" href="checklist.html#">
+          <span class="summary-when">September 1</span>
+          <h3>Reassess</h3>
+          <ul>
+            <li>Re-evaluate budgets and ULBs after the promotional credit period ends</li>
+          </ul>
+        </a>
+      </div>
+    </section>
+
+    <section class="container landing-section">
+      <h2>Who it&rsquo;s for</h2>
+      <div class="persona-grid">
+        <div class="persona-card">
+          <span class="tag tag-persona persona-admin">Enterprise owner / billing manager</span>
+          <p>Configure budgets and ULBs, communicate the change, and monitor enterprise-wide spend.</p>
+        </div>
+        <div class="persona-card">
+          <span class="tag tag-persona persona-dev">Developer</span>
+          <p>Update your tooling, choose the right model for the job, and keep an eye on your own usage.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="container landing-cta">
+      <h2>Ready to get started?</h2>
+      <p>Walk through the full checklist, check off items as you go, and track your progress locally in the browser.</p>
+      <a class="cta-button cta-button-lg" href="checklist.html">Open the checklist &rarr;</a>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>Usage-Based Billing Transition Checklist</p>
+    </div>
+  </footer>
+
+  <div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-hidden="true">
+    <button type="button" class="lightbox-close" aria-label="Close">&times;</button>
+    <button type="button" class="lightbox-nav lightbox-prev" aria-label="Previous image">&#8249;</button>
+    <img id="lightbox-img" alt="" />
+    <button type="button" class="lightbox-nav lightbox-next" aria-label="Next image">&#8250;</button>
+    <div id="lightbox-caption" class="lightbox-caption"></div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
