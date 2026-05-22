@@ -1,55 +1,83 @@
+/* Mona Sans — GitHub's brand typeface */
+@font-face {
+  font-family: 'Mona Sans';
+  src: url('fonts/MonaSansVF.woff2') format('woff2 supports variations'),
+       url('fonts/MonaSansVF.woff2') format('woff2-variations');
+  font-weight: 200 900;
+  font-stretch: 75% 125%;
+  font-style: normal;
+  font-optical-sizing: auto;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Mona Sans';
+  src: url('fonts/MonaSansVF-Italic.woff2') format('woff2 supports variations'),
+       url('fonts/MonaSansVF-Italic.woff2') format('woff2-variations');
+  font-weight: 200 900;
+  font-stretch: 75% 125%;
+  font-style: italic;
+  font-optical-sizing: auto;
+  font-display: swap;
+}
+
 :root {
-  --bg: #f6f8fa;
+  /* GitHub brand neutrals (green-tinted grays) */
+  --bg: #F2F5F3;
   --surface: #ffffff;
-  --surface-alt: #fbfcfd;
-  --border: #d0d7de;
-  --text: #1f2328;
-  --muted: #57606a;
-  --accent: #0969da;
-  --accent-dark: #0550ae;
-  --success: #1a7f37;
-  --success-bg: #dafbe1;
+  --surface-alt: #F2F5F3;
+  --border: #B6BFB8;
+  --text: #232925;
+  --muted: #909692;
+  /* Copilot theme: purple as primary accent */
+  --accent: #8534F3;
+  --accent-dark: #43179E;
+  /* GitHub Green for success states */
+  --success: #08872B;
+  --success-bg: #BFFFD1;
   --warn: #9a6700;
   --warn-bg: #fff8c5;
-  --info-bg: #ddf4ff;
-  --persona-admin-bg: #ddf4ff;
-  --persona-admin-fg: #0550ae;
-  --persona-dev-bg: #fbefff;
-  --persona-dev-fg: #6639ba;
-  --shadow: 0 1px 3px rgba(31, 35, 40, 0.08);
+  --info-bg: #ede4fd;
+  --persona-admin-bg: #ede4fd;
+  --persona-admin-fg: #43179E;
+  --persona-dev-bg: #BFFFD1;
+  --persona-dev-fg: #08872B;
+  --shadow: 0 1px 3px rgba(35, 41, 37, 0.08);
   --radius: 8px;
-  --header-grad-from: #0969da;
-  --header-grad-to: #0550ae;
-  --frame-bg-1: #eef1f4;
-  --frame-bg-2: #f6f8fa;
-  --check-done: #2da44e;
+  /* Copilot header: dark purple gradient */
+  --header-grad-from: #26115F;
+  --header-grad-to: #160048;
+  --frame-bg-1: #E4EBE6;
+  --frame-bg-2: #F2F5F3;
+  --check-done: #0FBF3E;
   color-scheme: light;
 }
 
 [data-theme="dark"] {
-  --bg: #0d1117;
-  --surface: #161b22;
-  --surface-alt: #1a2029;
-  --border: #30363d;
-  --text: #e6edf3;
-  --muted: #8b949e;
-  --accent: #58a6ff;
-  --accent-dark: #79c0ff;
-  --success: #3fb950;
-  --success-bg: #0f2d18;
+  /* GitHub brand dark neutrals */
+  --bg: #101411;
+  --surface: #1a1f1b;
+  --surface-alt: #1e2420;
+  --border: #3a413c;
+  --text: #E4EBE6;
+  --muted: #909692;
+  /* Copilot purple for dark mode */
+  --accent: #B870FF;
+  --accent-dark: #C898FD;
+  --success: #5FED83;
+  --success-bg: #0A241B;
   --warn: #d29922;
   --warn-bg: #2d2611;
-  --info-bg: #0c2d4f;
-  --persona-admin-bg: #0c2d4f;
-  --persona-admin-fg: #79c0ff;
-  --persona-dev-bg: #2d1f3f;
-  --persona-dev-fg: #d2a8ff;
+  --info-bg: #1e1435;
+  --persona-admin-bg: #1e1435;
+  --persona-admin-fg: #C898FD;
+  --persona-dev-bg: #0A241B;
+  --persona-dev-fg: #8CF2A6;
   --shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
-  --header-grad-from: #1f6feb;
-  --header-grad-to: #0d1117;
-  --frame-bg-1: #1a2029;
-  --frame-bg-2: #21262d;
-  --check-done: #3fb950;
+  --header-grad-from: #26115F;
+  --header-grad-to: #101411;
+  --frame-bg-1: #1e2420;
+  --frame-bg-2: #252c27;
+  --check-done: #0FBF3E;
   color-scheme: dark;
 }
 
@@ -58,7 +86,7 @@
 html, body {
   margin: 0;
   padding: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif;
+  font-family: "Mona Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
   color: var(--text);
   background: var(--bg);
   line-height: 1.5;
@@ -541,6 +569,18 @@ details[open] > summary::before { transform: rotate(90deg); }
   font-size: 0.85rem;
   text-align: center;
 }
+.footer-inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+.footer-logo {
+  height: 20px;
+  width: auto;
+  color: var(--muted);
+  opacity: 0.7;
+}
 
 /* ===== Landing page ===== */
 .hero {
@@ -597,7 +637,7 @@ details[open] > summary::before { transform: rotate(90deg); }
 }
 .cta-button:hover { background: var(--accent-dark); transform: translateY(-1px); }
 .cta-button-lg { padding: 14px 28px; font-size: 1.05rem; }
-[data-theme="dark"] .cta-button { color: #0d1117; }
+[data-theme="dark"] .cta-button { color: #101411; }
 .cta-link {
   color: var(--accent);
   text-decoration: none;
